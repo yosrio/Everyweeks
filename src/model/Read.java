@@ -33,11 +33,11 @@ public class Read {
         for (int i = 0; i < baris; i++) {
             for (int j = 0; j < kolom; j++) {
                 String ret = sheet[0].getCell(j, i).getContents();
-                System.out.print(ret + "\t");
+                System.out.print(ret + "\t\t");
             }
             if (i == 0) {
                 System.out.println("");
-                System.out.println("========================================================================================================================");
+                System.out.println("===================================================");
             }
             System.out.println("");
         }

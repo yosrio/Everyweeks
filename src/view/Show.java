@@ -7,6 +7,14 @@ package view;
 
 import java.awt.Dimension;
 import java.awt.Toolkit;
+import java.io.File;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+import jxl.Sheet;
+import jxl.Workbook;
+import jxl.read.biff.BiffException;
 
 /**
  *
@@ -20,7 +28,7 @@ public class Show extends javax.swing.JFrame {
     public Show() {
         initComponents();
         setTitle("Data Mining");
-        
+
         Dimension layar = Toolkit.getDefaultToolkit().getScreenSize();
         int x = layar.width / 2 - this.getSize().width / 2;
         int y = layar.height / 2 - this.getSize().height / 2;
@@ -52,7 +60,23 @@ public class Show extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Arial", 1, 24)); // NOI18N
         jLabel1.setText("Tampil Data");
 
+        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField1ActionPerformed(evt);
+            }
+        });
+
         jButton1.setText("Pilih Data");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        jButton1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                jButton1KeyReleased(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -160,6 +184,71 @@ public class Show extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButton1KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jButton1KeyReleased
+        try {
+            File file = new File(jTextField1.getText().toString()+".xls");
+
+            Workbook workBook = Workbook.getWorkbook(file);
+            Sheet[] sheet = workBook.getSheets();
+
+            int baris = sheet[0].getRows();
+            int kolom = sheet[0].getColumns();
+            for (int i = 0; i < baris; i++) {
+                for (int j = 0; j < kolom; j++) {
+                    String ret = sheet[0].getCell(j, i).getContents();
+                    System.out.print(ret + "\t");
+                }
+                if (i == 0) {
+                    System.out.println("");
+                    System.out.println("========================================================================================================================");
+                }
+                System.out.println("");
+            }
+            JOptionPane.showMessageDialog(this, "berhasil");
+        } catch (IOException ex) {
+            System.out.println("salah");
+            Logger.getLogger(Show.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (BiffException ex) {
+            System.out.println("salah");
+            Logger.getLogger(Show.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+    }//GEN-LAST:event_jButton1KeyReleased
+
+    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField1ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        try {
+            File file = new File(jTextField1.getText().toString()+".xls");
+
+            Workbook workBook = Workbook.getWorkbook(file);
+            Sheet[] sheet = workBook.getSheets();
+
+            int baris = sheet[0].getRows();
+            int kolom = sheet[0].getColumns();
+            for (int i = 0; i < baris; i++) {
+                for (int j = 0; j < kolom; j++) {
+                    String ret = sheet[0].getCell(j, i).getContents();
+                    System.out.print(ret + "\t");
+                }
+                if (i == 0) {
+                    System.out.println("");
+                    System.out.println("==============================================================================================");
+                }
+                System.out.println("");
+            }
+            JOptionPane.showMessageDialog(this, "berhasil");
+        } catch (IOException ex) {
+            JOptionPane.showMessageDialog(this, "salah input");
+            Logger.getLogger(Show.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (BiffException ex) {
+            JOptionPane.showMessageDialog(this, "salah input");
+            Logger.getLogger(Show.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
