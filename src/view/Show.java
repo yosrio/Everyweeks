@@ -188,48 +188,6 @@ public class Show extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jButton1KeyReleased
-//        File file = new File(jTextField1.getText().toString() + ".xls");
-//
-//        if (file.exists()) {
-//            try {
-//                Workbook workBook = Workbook.getWorkbook(file);
-//                Sheet[] sheet = workBook.getSheets();
-//
-//                int baris = sheet[0].getRows();
-//                int kolom = sheet[0].getColumns();
-//                for (int i = 0; i < baris; i++) {
-//                    for (int j = 0; j < kolom; j++) {
-//                        String ret = sheet[0].getCell(j, i).getContents();
-//                        System.out.print(ret + "\t");
-//                    }
-//                    if (i == 0) {
-//                        System.out.println("");
-//                        System.out.println("========================================================================================================================");
-//                    }
-//                    System.out.println("");
-//                }
-//                TableModel model = new DefaultTableModel(baris, kolom);
-//                for (int row = 0; row < baris; row++) {
-//                    for (int column = 0; column < kolom; column++) {
-//                        String content = sheet[0].getCell(column, row).getContents();
-//                        model.setValueAt(content, row, column);
-//                    }
-//                }
-//
-//                jTable1.setModel(model);
-//                JOptionPane.showMessageDialog(this, "berhasil");
-//
-//            } catch (IOException ex) {
-//                System.out.println("salah");
-//                Logger.getLogger(Show.class.getName()).log(Level.SEVERE, null, ex);
-//            } catch (BiffException ex) {
-//                System.out.println("salah");
-//                Logger.getLogger(Show.class.getName()).log(Level.SEVERE, null, ex);
-//            }
-//        } else {
-//            JOptionPane.showMessageDialog(this, "File tidak ditemukan");
-//
-//        }
 
     }//GEN-LAST:event_jButton1KeyReleased
 
@@ -248,18 +206,6 @@ public class Show extends javax.swing.JFrame {
                 int baris = sheet[0].getRows();
                 int kolom = sheet[0].getColumns();
                 System.out.println(sheet[0].getCell(0, 0).getContents());
-//                for (int i = 0; i < baris; i++) {
-//                    for (int j = 0; j < kolom; j++) {
-//                        
-//                        if (i != 0) {
-//                            System.out.println(i);
-//                            String ret = sheet[0].getCell(j, i).getContents();
-////                            System.out.print(ret + "\t");
-//                        }else{
-//                            
-//                        }
-//                    }
-//                }
                 TableModel model = new DefaultTableModel(baris, kolom);
                 for (int row = 0; row < baris; row++) {
                     for (int column = 0; column < kolom; column++) {
